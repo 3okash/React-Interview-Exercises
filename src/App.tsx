@@ -2,6 +2,11 @@ import { useState } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import './App.css'
 
+// SEO Components
+import SEOHead from './components/SEOHead'
+import { exerciseSEO } from './utils/seoConfig'
+
+
 // UI Components
 import CodeModal from './components/ui/CodeModal'
 
@@ -127,8 +132,22 @@ function App() {
   // Determine current exercise from URL to show specific code
   const currentExercise = EXERCISES.find(ex => `/${ex.key}` === location.pathname);
 
+  // Get SEO config for current exercise
+  const currentSEO = currentExercise ? exerciseSEO[currentExercise.key] : undefined;
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
+      {/* Dynamic SEO Meta Tags */}
+      <SEOHead
+        title={currentSEO?.title}
+        description={currentSEO?.description}
+        keywords={currentSEO?.keywords}
+        canonical={currentExercise
+          ? `https://3okash.github.io/React-Interview-Exercises/${currentExercise.key}`
+          : 'https://3okash.github.io/React-Interview-Exercises/'
+        }
+      />
+
       <CodeModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -137,7 +156,7 @@ function App() {
       />
 
       {/* Sidebar Navigation */}
-      <nav className="w-full md:w-72 bg-white border-b md:border-b-0 md:border-r border-gray-200 p-6 overflow-y-auto max-h-screen sticky top-0">
+      <nav className="w-full md:w-72 bg-white border-b md:border-b-0 md:border-r border-gray-200 p-6 overflow-y-auto max-h-screen sticky top-0" aria-label="Exercise navigation">
         <div className="mb-10">
           <a
             href="https://3okash.github.io/React-Interview-Exercises/"
