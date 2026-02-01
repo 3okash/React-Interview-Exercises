@@ -139,13 +139,13 @@ function App() {
       {/* Sidebar Navigation */}
       <nav className="w-full md:w-72 bg-white border-b md:border-b-0 md:border-r border-gray-200 p-6 overflow-y-auto max-h-screen sticky top-0">
         <div className="mb-10">
-          <NavLink
-            to="/"
-            className={({ isActive }) => `block group p-3 rounded-2xl transition-all ${isActive ? 'bg-blue-50' : ''}`}
+          <a
+            href="https://3okash.github.io/React-Interview-Exercises/"
+            className="block group p-3 rounded-2xl transition-all"
           >
             <h1 className="text-2xl font-black text-blue-600 tracking-tighter group-hover:text-blue-700 transition-colors">React Interview</h1>
             <p className="text-[10px] uppercase font-bold text-gray-400 tracking-widest">Exercises</p>
-          </NavLink>
+          </a>
         </div>
 
         <div className="space-y-8">
