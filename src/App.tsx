@@ -222,10 +222,6 @@ function App() {
               <Route path="*" element={<div className="p-10 text-center font-bold text-gray-300 uppercase tracking-widest">404 - Page not found</div>} />
             </Routes>
           </div>
-
-          <footer className="mt-8 text-center text-gray-300 text-[10px] font-bold uppercase tracking-[0.3em]">
-            React Interview Practice &copy; 2024
-          </footer>
         </div>
       </main>
     </div>
